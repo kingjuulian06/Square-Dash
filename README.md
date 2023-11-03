@@ -1,3 +1,3 @@
 # SquareDash
 
-Geometry Dash ist ein Spiel
+Square Dash ist ein Spiel
