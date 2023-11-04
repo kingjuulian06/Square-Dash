@@ -28,7 +28,7 @@ public class BlockScript : MonoBehaviour
             transform.Rotate(rotation * speed * Time.deltaTime);
         }
         
-        if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying) {
+        if(Input.GetKeyDown(KeyCode.Space) && IsAlive && IsFlying==false) {
             IsFlying = true;
             myRigidbody.velocity = Vector2.up * blockStrength;
         }
@@ -47,8 +47,10 @@ public class BlockScript : MonoBehaviour
         }
 
         if (collision.gameObject.layer==6) {
-            IsFlying = false;
+            IsFlying=false;
         }
+
     }
+
 
 }

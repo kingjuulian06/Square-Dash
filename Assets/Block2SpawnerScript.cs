@@ -6,7 +6,7 @@ public class Block2SpawnerScript : MonoBehaviour
 {
 
     public GameObject Block;
-    public float spawnRate = 4;
+    public float spawnRate = 0;
     private float timer = 0;
 
     // Start is called before the first frame update
