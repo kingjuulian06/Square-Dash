@@ -6,20 +6,30 @@ public class SmallSpikeScript : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float deadZone = -15;
+    public BlockScript player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
+        if (player.IsAlive) {
+            transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
+        }
 
         if(transform.position.x<deadZone){
-            Debug.Log("Block Deleted");
+            Debug.Log("Spike Deleted");
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.layer==7) {
+            Debug.Log("Spike destroyed cause of Overlapping!");
             Destroy(gameObject);
         }
     }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Logic
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - UI
   - Block
   - Spike
-  - 
-  - 
+  - Jumppad_klein
+  - "Jumppad_gro\xDF"
   - 
   - 
   - 

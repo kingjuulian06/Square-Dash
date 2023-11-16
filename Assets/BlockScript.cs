@@ -12,6 +12,8 @@ public class BlockScript : MonoBehaviour
     [SerializeField] private Vector3 rotation;
     [SerializeField] private float speed;
     public bool IsFlying = false;
+    [SerializeField] private AudioSource JumpSound;
+    [SerializeField] private AudioSource DieSound;
 
     // Start is called before the first frame update
     void Start()
@@ -30,24 +32,33 @@ public class BlockScript : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Space) && IsAlive && IsFlying==false) {
             IsFlying = true;
+            JumpSound.Play();
             myRigidbody.velocity = Vector2.up * blockStrength;
         }
 
-        if (transform.position.y < -5) {
-            logic.gameOver();
-            IsAlive = false;
-        }
 
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer==7) {
+            DieSound.Play();
             logic.gameOver();
             IsAlive = false;
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.layer==6) {
             IsFlying=false;
+        }
+
+        if (collision.gameObject.layer==8) {
+            IsFlying = true;
+            myRigidbody.velocity = Vector2.up * 10;
+        }
+
+        if (collision.gameObject.layer==9) {
+            IsFlying = true;
+            myRigidbody.velocity = Vector2.up * 17;
         }
 
     }

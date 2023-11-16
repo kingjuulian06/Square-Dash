@@ -9,12 +9,14 @@ public class LogicScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
-    // public TouchPoint1Script Script1;
-    // public TouchPoint2Script Script2;
-    // public TouchPoint3Script Script3;
-    // public TouchPoint4Script Script4;
-    // public bool IsTouchingBottom;
-    // public bool IsTouchingLeftSide;
+    public AudioSource BG_Music;
+    public BackgroundScroller bgscript;
+
+
+    void Start() 
+    {
+        bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
+    }
 
     public void addScore(int scoreToAdd){
         playerScore += scoreToAdd;
@@ -27,20 +29,11 @@ public class LogicScript : MonoBehaviour
 
     public void gameOver() {
         gameOverScreen.SetActive(true);
+        BG_Music.Stop();
+        bgscript.ScrollSpeed = 0f;
     }
 
-    // void Update() {
-    //     if (Script1.IsTouching1 && Script2.IsTouching2) {
-    //         IsTouchingBottom = false;
-    //     }
-    //     if (Script1.IsTouching1 && Script4.IsTouching4) {
-    //         IsTouchingLeftSide = true;
-    //     }
-    //     if (Script2.IsTouching2 && Script3.IsTouching3) {
-    //         IsTouchingLeftSide = false;
-    //     }
-    //     if (Script4.IsTouching4 && Script3.IsTouching3) {
-    //         IsTouchingBottom = true;
-    //     }
-    // }
+    void Update() {
+    
+    }
 }
