@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
-    private int playerScore;
-    public Text scoreText;
+
+    public bool IsFreezed = false;
     public GameObject gameOverScreen;
     public GameObject pauseMenu;
     public AudioSource BG_Music;
@@ -25,18 +25,13 @@ public class LogicScript : MonoBehaviour
         bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
     }
 
-    public void addScore(int scoreToAdd){
-        playerScore += scoreToAdd;
-        scoreText.text = playerScore.ToString();
-    }
-
     public void addJump() {
         playerJumps += 1;
         jumpsText.text = playerJumps.ToString() + "  Jumps";
     }
 
     public void addTime() {
-        playTime += Time;
+        //playTime += Time;
         timeText.text = playTime.ToString() + "  Seconds";
     }
 
@@ -51,10 +46,17 @@ public class LogicScript : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape)||!IsFreezed) {
+            IsFreezed = true;
             pauseMenu.SetActive(true);
             BG_Music.Stop();
             bgscript.ScrollSpeed = 0f;
+        }
+        else {
+            IsFreezed = false;
+            pauseMenu.SetActive(false);
+            BG_Music.Play();
+            bgscript.ScrollSpeed = 1f;
         }
     }
 }

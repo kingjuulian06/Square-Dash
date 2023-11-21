@@ -13,17 +13,20 @@ public class jumppad_script : MonoBehaviour
     public float duration;
     public SpriteRenderer m_SR;
 
+    public LogicScript logic;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
         m_SR = GetComponent<SpriteRenderer>();
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.IsAlive) {
+        if (player.IsAlive||!logic.IsFreezed) {
             transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
         }
 
