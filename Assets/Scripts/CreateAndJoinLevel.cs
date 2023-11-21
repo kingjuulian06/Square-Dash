@@ -14,7 +14,7 @@ public class CreateAndJoinLevel : MonoBehaviour
     }
     public void JoinRoom() 
     {
-        SceneManager.LoadScene(scroller.i + 2);
+        SceneManager.LoadScene(scroller.i + 3);
     }
 
 }
