@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CloseGame : MonoBehaviour
 {
     public void startMenu() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Lobby");
     }
 
 }

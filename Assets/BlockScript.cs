@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BlockScript : MonoBehaviour
 {
 
@@ -15,6 +16,7 @@ public class BlockScript : MonoBehaviour
     [SerializeField] private AudioSource JumpSound;
     [SerializeField] private AudioSource DieSound;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,18 +26,17 @@ public class BlockScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
         if (IsFlying) {
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
         }
-        
+    
         if(Input.GetKeyDown(KeyCode.Space) && IsAlive && IsFlying==false) {
             IsFlying = true;
             JumpSound.Play();
             myRigidbody.velocity = Vector2.up * blockStrength;
         }
-
 
     }
 
