@@ -486,6 +486,7 @@ MonoBehaviour:
   m_SpriteB: {fileID: 21300000, guid: 8774469666b72e64981b972de94e1cc9, type: 3}
   duration: 0.1
   m_SR: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!70 &180622470
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1229,8 +1230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdc8fa984cc5fe4a8816920234d1169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  player: {fileID: 0}
+  IsFreezed: 0
   gameOverScreen: {fileID: 1282931088}
+  pauseMenu: {fileID: 1947065555}
   BG_Music: {fileID: 1710401282}
   bgscript: {fileID: 1489183630}
   jumpsText: {fileID: 629075521}
@@ -1269,6 +1272,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1947065555}
   BG_Music: {fileID: 1710401282}
   bgscript: {fileID: 1489183630}
+  logic: {fileID: 0}
 --- !u!1 &391698955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2801,7 @@ MonoBehaviour:
   Block: {fileID: 3997803213758825311, guid: f432afb7d9785944985921bd4551a51d, type: 3}
   spawnRate: 0.1
   player: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!4 &1295304553
 Transform:
   m_ObjectHideFlags: 0
@@ -4623,6 +4628,7 @@ MonoBehaviour:
   m_SpriteB: {fileID: 21300000, guid: 703cea753b75d7240b3d4ec518997518, type: 3}
   duration: 0.1
   m_SR: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!1001 &1929532885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6484,6 +6490,7 @@ MonoBehaviour:
   moveSpeed: 0
   deadZone: -15
   player: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!4 &3997803212941429622
 Transform:
   m_ObjectHideFlags: 0
@@ -6533,6 +6540,7 @@ MonoBehaviour:
   moveSpeed: 0
   deadZone: -15
   player: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!61 &3997803213657427970
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BlockScript : MonoBehaviour
 {
 
+    public Vector2 velocity; 
     public Rigidbody2D myRigidbody;
     public float blockStrength;
     public bool IsAlive = true;
@@ -27,15 +28,21 @@ public class BlockScript : MonoBehaviour
     void Update()
     {
        
-        if (IsFlying) {
+        if (IsFlying && !logic.IsFreezed) {
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
         }
     
-        if(Input.GetKeyDown(KeyCode.Space) && IsAlive && IsFlying==false) {
+        if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed) {
             IsFlying = true;
             JumpSound.Play();
             myRigidbody.velocity = Vector2.up * blockStrength;
+        }
+
+        if(logic.IsFreezed) {
+            velocity = myRigidbody.velocity;
+            myRigidbody.velocity = Vector2.zero;
+            myRigidbody.gravityScale = 0;
         }
 
     }

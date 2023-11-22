@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LogicScript : MonoBehaviour
 {
 
+    public BlockScript player;
     public bool IsFreezed = false;
     public GameObject gameOverScreen;
     public GameObject pauseMenu;
@@ -23,6 +24,7 @@ public class LogicScript : MonoBehaviour
     void Start() 
     {
         bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
     }
 
     public void addJump() {
@@ -45,18 +47,22 @@ public class LogicScript : MonoBehaviour
         bgscript.ScrollSpeed = 0f;
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)||!IsFreezed) {
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !IsFreezed && player.IsAlive) {
             IsFreezed = true;
             pauseMenu.SetActive(true);
             BG_Music.Stop();
             bgscript.ScrollSpeed = 0f;
         }
-        else {
-            IsFreezed = false;
+
+        else if (Input.GetKeyDown(KeyCode.Escape) && IsFreezed && player.IsAlive) {
             pauseMenu.SetActive(false);
             BG_Music.Play();
             bgscript.ScrollSpeed = 1f;
+            player.myRigidbody.gravityScale = 2;
+            player.myRigidbody.velocity = player.velocity;
+            IsFreezed = false;
         }
     }
 }

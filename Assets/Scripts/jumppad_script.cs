@@ -26,7 +26,7 @@ public class jumppad_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.IsAlive||!logic.IsFreezed) {
+        if (player.IsAlive&&!logic.IsFreezed) {
             transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
         }
 
