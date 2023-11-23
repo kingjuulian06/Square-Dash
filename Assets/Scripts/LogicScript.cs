@@ -17,7 +17,7 @@ public class LogicScript : MonoBehaviour
     private int playerJumps;
     public Text jumpsText;
 
-    private int playTime;
+    private float playTime;
     public Text timeText;
 
 
@@ -33,7 +33,7 @@ public class LogicScript : MonoBehaviour
     }
 
     public void addTime() {
-        //playTime += Time;
+        playTime += Time.deltaTime;
         timeText.text = playTime.ToString() + "  Seconds";
     }
 
@@ -49,6 +49,7 @@ public class LogicScript : MonoBehaviour
 
     void Update() 
     {
+
         if (Input.GetKeyDown(KeyCode.Escape) && !IsFreezed && player.IsAlive) {
             IsFreezed = true;
             pauseMenu.SetActive(true);
@@ -62,5 +63,7 @@ public class LogicScript : MonoBehaviour
             player.myRigidbody.velocity = player.velocity;
             IsFreezed = false;
         }
+
+        addTime();
     }
 }

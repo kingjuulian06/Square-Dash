@@ -34,6 +34,7 @@ public class BlockScript : MonoBehaviour
         }
     
         if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed) {
+            logic.addJump();
             IsFlying = true;
             JumpSound.Play();
             myRigidbody.velocity = Vector2.up * blockStrength;

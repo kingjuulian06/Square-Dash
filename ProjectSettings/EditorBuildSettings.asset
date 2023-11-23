@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 8240615bc55e9ac4a84999a9b6359255
   - enabled: 1
-    path: Assets/Scenes/Level_01.unity
-    guid: f31bc3f5439bc684194182ee640e22fa
-  - enabled: 1
     path: Assets/Scenes/Pause_Menu.unity
     guid: 87ca1619e6402204c9432061705dd240
+  - enabled: 1
+    path: Assets/Scenes/Level_01.unity
+    guid: f31bc3f5439bc684194182ee640e22fa
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
