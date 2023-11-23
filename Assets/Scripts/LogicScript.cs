@@ -54,9 +54,7 @@ public class LogicScript : MonoBehaviour
             pauseMenu.SetActive(true);
             BG_Music.Stop();
             bgscript.ScrollSpeed = 0f;
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Escape) && IsFreezed && player.IsAlive) {
+        } else if (Input.GetKeyDown(KeyCode.Escape) && IsFreezed && player.IsAlive) {
             pauseMenu.SetActive(false);
             BG_Music.Play();
             bgscript.ScrollSpeed = 1f;
