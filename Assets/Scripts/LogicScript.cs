@@ -18,6 +18,7 @@ public class LogicScript : MonoBehaviour
     public Text jumpsText;
 
     private float playTime;
+    private int newPlayTime;
     public Text timeText;
 
 
@@ -34,6 +35,7 @@ public class LogicScript : MonoBehaviour
 
     public void addTime() {
         playTime += Time.deltaTime;
+        newPlayTime = Mathf.RoundToInt(playTime);
         timeText.text = playTime.ToString() + "  Seconds";
     }
 
