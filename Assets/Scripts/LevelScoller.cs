@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelScoller : MonoBehaviour
 {
     RectTransform myRectTransform;
-    public int i;
+    public int i = 0;
 
     private void Start()
     {
@@ -13,13 +13,19 @@ public class LevelScoller : MonoBehaviour
     }
     public void LeftClick()
     {
-        myRectTransform.localPosition += Vector3.right * 1500;
-        i -= 1;
+        if (i==0) {}
+        else {
+            myRectTransform.localPosition += Vector3.right * 1500;
+            i -= 1;
+        }
     }
 
     public void RightClick()
     {
-        myRectTransform.localPosition += Vector3.left * 1500;
-        i += 1;
+        if (i==2) {}
+        else{
+            myRectTransform.localPosition += Vector3.left * 1500;
+            i += 1;
+        }
     }
 }

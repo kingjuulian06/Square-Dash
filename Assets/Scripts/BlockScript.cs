@@ -16,6 +16,7 @@ public class BlockScript : MonoBehaviour
     public bool IsFlying = false;
     [SerializeField] private AudioSource JumpSound;
     [SerializeField] private AudioSource DieSound;
+    public UnityEngine.RigidbodyConstraints2D constraints;
 
 
     // Start is called before the first frame update
@@ -27,7 +28,11 @@ public class BlockScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (!logic.IsFreezed) {
+            myRigidbody.gravityScale = 2;
+            myRigidbody.constraints = RigidbodyConstraints2D.None;
+        }
+
         if (IsFlying && !logic.IsFreezed) {
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
@@ -44,6 +49,7 @@ public class BlockScript : MonoBehaviour
             velocity = myRigidbody.velocity;
             myRigidbody.velocity = Vector2.zero;
             myRigidbody.gravityScale = 0;
+            myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
     }

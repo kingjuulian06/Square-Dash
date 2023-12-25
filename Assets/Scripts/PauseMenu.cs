@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,7 +12,18 @@ public class PauseMenu : MonoBehaviour
 
     public LogicScript logic;
 
+    public void ClosePauseMenu(){
+        pauseMenu.SetActive(false);
+        BG_Music.Play();
+        bgscript.ScrollSpeed = 1f;
+        logic.IsFreezed = false;        
+    }
 
+    public void ExitGame() {
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+    
     void Start() 
     {
         bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
@@ -24,6 +36,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(true);
             BG_Music.Stop();
             bgscript.ScrollSpeed = 0f;
-        }    
+        }   
     }
+
+    
 }
