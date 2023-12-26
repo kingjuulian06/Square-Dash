@@ -76,6 +76,17 @@ public class BlockScript : MonoBehaviour
             myRigidbody.velocity = Vector2.up * 17;
         }
 
+        if (collision.gameObject.layer==10) {
+            IsFlying = false;
+            rotation = Vector3.back;
+            transform.Rotate(rotation * speed * Time.deltaTime);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.layer==10) {
+            IsFlying = true;
+        }
     }
 
 
