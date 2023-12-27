@@ -17,12 +17,7 @@ public class LogicScript : MonoBehaviour
     private int playerJumps;
     public Text jumpsText;
 
-<<<<<<< HEAD
-    private float playTime;
-    private int newPlayTime;
-=======
     private int playTime;
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
     public Text timeText;
 
 
@@ -38,12 +33,7 @@ public class LogicScript : MonoBehaviour
     }
 
     public void addTime() {
-<<<<<<< HEAD
-        playTime += Time.deltaTime;
-        newPlayTime = Mathf.RoundToInt(playTime);
-=======
         //playTime += Time;
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
         timeText.text = playTime.ToString() + "  Seconds";
     }
 
@@ -55,32 +45,17 @@ public class LogicScript : MonoBehaviour
         gameOverScreen.SetActive(true);
         BG_Music.Stop();
         bgscript.ScrollSpeed = 0f;
-<<<<<<< HEAD
-        player.IsAlive = false;
-=======
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
     }
 
     void Update() 
     {
-<<<<<<< HEAD
-
-        if (Input.GetKeyUp(KeyCode.Escape) && !IsFreezed && player.IsAlive) {
-            IsFreezed = true;
-            pauseMenu.SetActive(true);
-            BG_Music.Pause();
-            bgscript.ScrollSpeed = 0f;
-        } else if (Input.GetKeyUp(KeyCode.Escape) && IsFreezed && player.IsAlive) {
-=======
         if (Input.GetKeyDown(KeyCode.Escape) && !IsFreezed && player.IsAlive) {
             IsFreezed = true;
             pauseMenu.SetActive(true);
             BG_Music.Stop();
             bgscript.ScrollSpeed = 0f;
         }
-
         else if (Input.GetKeyDown(KeyCode.Escape) && IsFreezed && player.IsAlive) {
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
             pauseMenu.SetActive(false);
             BG_Music.Play();
             bgscript.ScrollSpeed = 1f;
@@ -88,14 +63,5 @@ public class LogicScript : MonoBehaviour
             player.myRigidbody.velocity = player.velocity;
             IsFreezed = false;
         }
-<<<<<<< HEAD
-
-        if (!IsFreezed && player.IsAlive) {
-            addTime();
-        }
-
-        
-=======
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
     }
 }

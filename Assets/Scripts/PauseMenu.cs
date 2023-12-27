@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-using UnityEngine.SceneManagement; 
-=======
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
-
+using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
@@ -15,7 +11,6 @@ public class PauseMenu : MonoBehaviour
 
     public LogicScript logic;
 
-<<<<<<< HEAD
     public void ClosePauseMenu(){
         pauseMenu.SetActive(false);
         BG_Music.Play();
@@ -28,9 +23,6 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
     
-=======
-
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
     void Start() 
     {
         bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
@@ -43,13 +35,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(true);
             BG_Music.Stop();
             bgscript.ScrollSpeed = 0f;
-<<<<<<< HEAD
         }   
     }
 
     
-=======
-        }    
-    }
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
 }

@@ -3,25 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Logic
-  - Background
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Block
-  - Spike
-  - Jumppad_klein
-  - "Jumppad_gro\xDF"
-<<<<<<< HEAD
-  - Polargeist
-=======
   - 
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -47,7 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
   m_RenderingLayers:
   - Default
   - 
@@ -81,5 +74,3 @@ TagManager:
   - 
   - 
   - 
-=======
->>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
