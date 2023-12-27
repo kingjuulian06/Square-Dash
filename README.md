@@ -1,4 +1,4 @@
 # SquareDash
 
 Square Dash ist ein Spiel
-Lad es dir jetzt kostenlos herunter
+Es ist angelehnt an das weltbekannte Spiel "Geometry Dash"
