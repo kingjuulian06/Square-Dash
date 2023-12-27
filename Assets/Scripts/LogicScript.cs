@@ -33,7 +33,7 @@ public class LogicScript : MonoBehaviour
     }
 
     public void addTime() {
-        //playTime += Time;
+        playTime += Mathf.RoundToInt(Time.deltaTime);
         timeText.text = playTime.ToString() + "  Seconds";
     }
 
@@ -59,7 +59,6 @@ public class LogicScript : MonoBehaviour
             pauseMenu.SetActive(false);
             BG_Music.Play();
             bgscript.ScrollSpeed = 1f;
-            player.myRigidbody.gravityScale = 2;
             player.myRigidbody.velocity = player.velocity;
             IsFreezed = false;
         }

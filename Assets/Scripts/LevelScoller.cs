@@ -22,7 +22,7 @@ public class LevelScoller : MonoBehaviour
 
     public void RightClick()
     {
-        if (i==2) {}
+        if (i==4) {}
         else{
             myRectTransform.localPosition += Vector3.left * 1500;
             i += 1;

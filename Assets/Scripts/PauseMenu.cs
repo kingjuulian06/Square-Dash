@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitGame() {
         pauseMenu.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     
     void Start() 
