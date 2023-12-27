@@ -16,7 +16,10 @@ public class BlockScript : MonoBehaviour
     public bool IsFlying = false;
     [SerializeField] private AudioSource JumpSound;
     [SerializeField] private AudioSource DieSound;
+<<<<<<< HEAD
     public UnityEngine.RigidbodyConstraints2D constraints;
+=======
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
 
 
     // Start is called before the first frame update
@@ -28,18 +31,25 @@ public class BlockScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         if (!logic.IsFreezed) {
             myRigidbody.gravityScale = 2;
             myRigidbody.constraints = RigidbodyConstraints2D.None;
         }
 
+=======
+       
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
         if (IsFlying && !logic.IsFreezed) {
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
         }
     
         if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed) {
+<<<<<<< HEAD
             logic.addJump();
+=======
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
             IsFlying = true;
             JumpSound.Play();
             myRigidbody.velocity = Vector2.up * blockStrength;
@@ -49,7 +59,10 @@ public class BlockScript : MonoBehaviour
             velocity = myRigidbody.velocity;
             myRigidbody.velocity = Vector2.zero;
             myRigidbody.gravityScale = 0;
+<<<<<<< HEAD
             myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+=======
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
         }
 
     }
@@ -76,6 +89,7 @@ public class BlockScript : MonoBehaviour
             myRigidbody.velocity = Vector2.up * 17;
         }
 
+<<<<<<< HEAD
         if (collision.gameObject.layer==10) {
             IsFlying = false;
             rotation = Vector3.back;
@@ -87,6 +101,8 @@ public class BlockScript : MonoBehaviour
         if (collision.gameObject.layer==10) {
             IsFlying = true;
         }
+=======
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
     }
 
 

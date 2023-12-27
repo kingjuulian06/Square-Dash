@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Loading_Screen.unity
     guid: 6491cb6d9680e214e9404ef479e07b42
+<<<<<<< HEAD
   - enabled: 0
     path: Assets/Scenes/Pause_Menu.unity
     guid: 87ca1619e6402204c9432061705dd240
+=======
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
   - enabled: 1
     path: Assets/Scenes/Start Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
@@ -21,10 +24,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_01.unity
     guid: f31bc3f5439bc684194182ee640e22fa
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Level_02.unity
     guid: 71696db890b2ced45a86bc114805f6a4
   - enabled: 1
     path: Assets/Scenes/Level_03.unity
     guid: 5e4df9c1caeb1c9489cdad15dc22816f
+=======
+    path: Assets/Scenes/Pause_Menu.unity
+    guid: 87ca1619e6402204c9432061705dd240
+>>>>>>> 5794762dc91d1f0d42c77a434b28d24af5d5a080
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
