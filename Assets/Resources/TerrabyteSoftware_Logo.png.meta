@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 19fe34bc253db7345bce7b2c72bbc593
+guid: dc1fc40f0301f544c8e167fc17dc019f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2563248171097983681
-    second: UI Element_0
+      213: 671047073568174383
+    second: TerrabyteSoftware_Logo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI Element_0
+      name: TerrabyteSoftware_Logo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 106
-        height: 106
+        width: 1382
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f35f88a7e538d6cd0800000000000000
-      internalID: -2563248171097983681
+      spriteID: f21b89f02c9005900800000000000000
+      internalID: 671047073568174383
       vertices: []
       indices: 
       edges: []
@@ -182,8 +182,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      UI Element_0: -2563248171097983681
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
