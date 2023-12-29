@@ -6,29 +6,29 @@ using UnityEngine;
 public class BlockScript : MonoBehaviour
 {
     public Vector2 velocity; 
-    public Rigidbody2D myRigidbody;
+    public Rigidbody2D m_Rigidbody;
     public float blockStrength;
     public bool IsAlive = true;
     public LogicScript  logic;
-    [SerializeField] private Vector3 rotation;
-    [SerializeField] private float speed;
-    public bool IsFlying = false;
+    private Vector3 rotation;
+    private float speed = 175;
+    public bool IsFlying = false; 
 
     private UnityEngine.RigidbodyConstraints2D constraints;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        m_Rigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        logic.addTime();
         if (!logic.IsFreezed) {
-            myRigidbody.gravityScale = 2;
-            myRigidbody.constraints = RigidbodyConstraints2D.None;
+            m_Rigidbody.gravityScale = 2;
+            m_Rigidbody.constraints = RigidbodyConstraints2D.None;
         }
         if (IsFlying && !logic.IsFreezed) {
             rotation = Vector3.back;
@@ -39,14 +39,14 @@ public class BlockScript : MonoBehaviour
             logic.addJump();
             IsFlying = true;
             AudioManager.instance.PlayOneShot(FMODEvents.instance.jumped, this.transform.position);
-            myRigidbody.velocity = Vector2.up * blockStrength;
+            m_Rigidbody.velocity = Vector2.up * blockStrength;
         }
 
         if(logic.IsFreezed) {
-            velocity = myRigidbody.velocity;
-            myRigidbody.velocity = Vector2.zero;
-            myRigidbody.gravityScale = 0;
-            myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            velocity = m_Rigidbody.velocity;
+            m_Rigidbody.velocity = Vector2.zero;
+            m_Rigidbody.gravityScale = 0;
+            m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
     }
@@ -65,12 +65,12 @@ public class BlockScript : MonoBehaviour
 
         if (collision.gameObject.layer==8) {
             IsFlying = true;
-            myRigidbody.velocity = Vector2.up * 10;
+            m_Rigidbody.velocity = Vector2.up * 10;
         }
 
         if (collision.gameObject.layer==9) {
             IsFlying = true;
-            myRigidbody.velocity = Vector2.up * 17;
+            m_Rigidbody.velocity = Vector2.up * 17;
         }
 
         if (collision.gameObject.layer==10) {
@@ -80,19 +80,29 @@ public class BlockScript : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision) {
-        if (collision.gameObject.layer==10) {
+    private void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.layer==10) {
             IsFlying = false;
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.layer==10) {
+    private void OnTriggerStay2D(Collider2D collider) {
+        if (collider.gameObject.layer==10) {
+            rotation = Vector3.back;
+            transform.Rotate(rotation * speed * Time.deltaTime);
+        }
+    }   
+    
+
+    private void OnTriggerExit2D(Collider2D collider) {
+        if (collider.gameObject.layer==10) 
+        {
             IsFlying = true;
         }
-    }
+    }        
+    
 
 
 }

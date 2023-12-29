@@ -5,11 +5,12 @@ using UnityEngine;
 public class BackgroundScroller : MonoBehaviour
 {
     [Range(-1f,1f)]
-    public float ScrollSpeed = 0.5f;
+    public float ScrollSpeed = 1f;
     private float offset;
     private Material mat;
 
-    void Start() {
+    void Start() 
+    {
         mat = GetComponent<Renderer>().material;
     }
 

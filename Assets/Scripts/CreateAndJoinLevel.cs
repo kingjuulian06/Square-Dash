@@ -19,4 +19,9 @@ public class CreateAndJoinLevel : MonoBehaviour
         levelChanger.FadeToLevel(scroller.i + 2);
     }
 
+    public void StartMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }

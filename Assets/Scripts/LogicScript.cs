@@ -10,15 +10,17 @@ public class LogicScript : MonoBehaviour
 
     public BlockScript player;
     public bool IsFreezed = false;
+    [field: Header("Screens")]
     public GameObject gameOverScreen;
     public GameObject pauseMenu;
     public BackgroundScroller bgscript;
-    [field: Header("Stats")]
     private int playerJumps;
-    public Text jumpsText;
-
     private int playTime;
+    private int trys;
+    [field: Header("Stats")]
+    public Text jumpsText;
     public Text timeText;
+    public Text tryText;
     [field: Header("Audio")]
     public AudioManager audioManager;
     [field: Header("Animation")]
@@ -38,8 +40,12 @@ public class LogicScript : MonoBehaviour
     }
 
     public void addTime() {
-        playTime += Mathf.RoundToInt(Time.deltaTime);
+        playTime += Mathf.RoundToInt(0);
         timeText.text = playTime.ToString() + "  Seconds";
+    }
+
+    public void addTry() {
+        trys += 1;
     }
 
     public void restartGame() {
@@ -70,7 +76,8 @@ public class LogicScript : MonoBehaviour
         pauseMenu.SetActive(false);
         bgscript.ScrollSpeed = 1f;
         audioManager.PlayMusic();
-        player.myRigidbody.velocity = player.velocity;
+        player.m_Rigidbody.velocity = player.velocity;
+
     }
 
     public void ExitGame() {
