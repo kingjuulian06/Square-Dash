@@ -7,14 +7,16 @@ public class CreateAndJoinLevel : MonoBehaviour
 {
 
     public LevelScoller scroller;
+    public LevelChanger levelChanger;
 
     private void Start()
     {
         scroller = GameObject.Find("Level_Scroller").GetComponent<LevelScoller>();
+        levelChanger = GameObject.FindGameObjectWithTag("LevelChanger").GetComponent<LevelChanger>();
     }
     public void JoinRoom() 
     {
-        SceneManager.LoadScene(scroller.i + 2);
+        levelChanger.FadeToLevel(scroller.i + 2);
     }
 
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BlockScript : MonoBehaviour
 {
-
     public Vector2 velocity; 
     public Rigidbody2D myRigidbody;
     public float blockStrength;
@@ -14,10 +13,8 @@ public class BlockScript : MonoBehaviour
     [SerializeField] private Vector3 rotation;
     [SerializeField] private float speed;
     public bool IsFlying = false;
-    [SerializeField] private AudioSource JumpSound;
-    [SerializeField] private AudioSource DieSound;
 
-    public UnityEngine.RigidbodyConstraints2D constraints;
+    private UnityEngine.RigidbodyConstraints2D constraints;
 
 
     // Start is called before the first frame update
@@ -41,7 +38,7 @@ public class BlockScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed) {
             logic.addJump();
             IsFlying = true;
-            JumpSound.Play();
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.jumped, this.transform.position);
             myRigidbody.velocity = Vector2.up * blockStrength;
         }
 
@@ -56,7 +53,7 @@ public class BlockScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer==7) {
-            DieSound.Play();
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.died, this.transform.position);
             logic.gameOver();
             IsAlive = false;
             Destroy(gameObject);

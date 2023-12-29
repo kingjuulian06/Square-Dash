@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Logic
   - Background
+  - LevelChanger
   layers:
   - Default
   - TransparentFX
