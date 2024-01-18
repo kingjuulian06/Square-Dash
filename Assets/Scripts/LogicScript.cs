@@ -16,6 +16,7 @@ public class LogicScript : MonoBehaviour
     public BackgroundScroller bgscript;
     private int playerJumps;
     private int playTime;
+    private int lastTime;
     private int trys;
     [field: Header("Stats")]
     public Text jumpsText;
@@ -40,15 +41,18 @@ public class LogicScript : MonoBehaviour
     }
 
     public void addTime() {
-        playTime += Mathf.RoundToInt(0);
+        playTime = Mathf.RoundToInt(Time.time) - lastTime;
         timeText.text = playTime.ToString() + "  Seconds";
     }
 
     public void addTry() {
         trys += 1;
+        tryText.text = trys.ToString() + " Versuche";
     }
 
     public void restartGame() {
+        addTry();
+        lastTime = playTime;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

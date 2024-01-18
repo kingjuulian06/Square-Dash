@@ -25,10 +25,10 @@ public class BlockScript : MonoBehaviour
 
     void Update()
     {
-        logic.addTime();
         if (!logic.IsFreezed) {
             m_Rigidbody.gravityScale = 2;
             m_Rigidbody.constraints = RigidbodyConstraints2D.None;
+            logic.addTime();
         }
         if (IsFlying && !logic.IsFreezed) {
             rotation = Vector3.back;
@@ -51,7 +51,7 @@ public class BlockScript : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer==7) {
             AudioManager.instance.PlayOneShot(FMODEvents.instance.died, this.transform.position);
             logic.gameOver();
