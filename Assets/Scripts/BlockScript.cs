@@ -13,6 +13,7 @@ public class BlockScript : MonoBehaviour
     private Vector3 rotation;
     private float speed = 175;
     public bool IsFlying = false; 
+    public int gravity = 2;
 
     private UnityEngine.RigidbodyConstraints2D constraints;
 
@@ -26,7 +27,7 @@ public class BlockScript : MonoBehaviour
     void Update()
     {
         if (!logic.IsFreezed) {
-            m_Rigidbody.gravityScale = 2;
+            m_Rigidbody.gravityScale = gravity;
             m_Rigidbody.constraints = RigidbodyConstraints2D.None;
             logic.addTime();
         }
@@ -45,7 +46,7 @@ public class BlockScript : MonoBehaviour
         if(logic.IsFreezed) {
             velocity = m_Rigidbody.velocity;
             m_Rigidbody.velocity = Vector2.zero;
-            m_Rigidbody.gravityScale = 0;
+            gravity = 0;
             m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
@@ -72,12 +73,7 @@ public class BlockScript : MonoBehaviour
             IsFlying = true;
             m_Rigidbody.velocity = Vector2.up * 17;
         }
-
-        if (collision.gameObject.layer==10) {
-            IsFlying = false;
-            rotation = Vector3.back;
-            transform.Rotate(rotation * speed * Time.deltaTime);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
@@ -85,6 +81,15 @@ public class BlockScript : MonoBehaviour
             IsFlying = false;
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
+        }
+
+        if (collider.gameObject.layer==11) {
+            if (collider.gameObject.GetComponent<Gravity_Reverse_Portal_Script>().direction==0) {
+                gravity = -2;
+            }
+            else if(collider.gameObject.GetComponent<Gravity_Reverse_Portal_Script>().direction==1){
+                gravity = 2;
+            }
         }
     }
 

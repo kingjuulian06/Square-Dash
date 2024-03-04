@@ -81,7 +81,7 @@ public class LogicScript : MonoBehaviour
         bgscript.ScrollSpeed = 1f;
         audioManager.PlayMusic();
         player.m_Rigidbody.velocity = player.velocity;
-
+        player.gravity = 2;
     }
 
     public void ExitGame() {
