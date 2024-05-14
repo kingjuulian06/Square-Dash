@@ -14,14 +14,20 @@ public class BlockScript : MonoBehaviour
     private float speed = 175;
     public bool IsFlying = false; 
     public int gravity = 2;
+    private GameObject movement;
+    public Sprite sprite1;
+    public Sprite sprite2;
+    public int direction = 1;
 
     private UnityEngine.RigidbodyConstraints2D constraints;
 
 
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = sprite1;
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         m_Rigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        movement = GameObject.FindWithTag("Level");
     }
 
     void Update()
@@ -31,23 +37,32 @@ public class BlockScript : MonoBehaviour
             m_Rigidbody.constraints = RigidbodyConstraints2D.None;
             logic.addTime();
         }
-        if (IsFlying && !logic.IsFreezed) {
+        if (IsFlying && !logic.IsFreezed && GetComponent<SpriteRenderer>().sprite == sprite1) {
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
         }
     
-        if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed) {
+        if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed && GetComponent<SpriteRenderer>().sprite == sprite1) {
             logic.addJump();
             IsFlying = true;
             AudioManager.instance.PlayOneShot(FMODEvents.instance.jumped, this.transform.position);
-            m_Rigidbody.velocity = Vector2.up * blockStrength;
+            m_Rigidbody.velocity = Vector2.up * blockStrength * direction;
         }
 
         if(logic.IsFreezed) {
+            m_Rigidbody.gravityScale = gravity;
             velocity = m_Rigidbody.velocity;
             m_Rigidbody.velocity = Vector2.zero;
-            gravity = 0;
             m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+        if(GetComponent<SpriteRenderer>().sprite == sprite2){
+            if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed){
+                gravity = -gravity;
+            }
+
+            rotation = Vector3.forward;
+            transform.Rotate(rotation * speed * Time.deltaTime);
         }
 
     }
@@ -65,13 +80,13 @@ public class BlockScript : MonoBehaviour
         }
 
         if (collision.gameObject.layer==8) {
-            IsFlying = true;
             m_Rigidbody.velocity = Vector2.up * 10;
+            IsFlying = true;
         }
 
         if (collision.gameObject.layer==9) {
-            IsFlying = true;
             m_Rigidbody.velocity = Vector2.up * 17;
+            IsFlying = true;
         }
         
     }
@@ -86,9 +101,32 @@ public class BlockScript : MonoBehaviour
         if (collider.gameObject.layer==11) {
             if (collider.gameObject.GetComponent<Gravity_Reverse_Portal_Script>().direction==0) {
                 gravity = -2;
+                direction = -1;
             }
             else if(collider.gameObject.GetComponent<Gravity_Reverse_Portal_Script>().direction==1){
                 gravity = 2;
+                direction = 1;
+            }
+        }
+
+        if (collider.gameObject.layer==12){
+            
+            if (collider.gameObject.GetComponent<MirrorScript>().direction==0) {
+                movement.GetComponent<MovementScript>().direction = -1;
+            }
+            else if(collider.gameObject.GetComponent<MirrorScript>().direction==1) {
+                movement.GetComponent<MovementScript>().direction = 1;
+            }
+        }
+
+        if (collider.gameObject.layer==13){
+            if(GetComponent<SpriteRenderer>().sprite==sprite1){
+                GetComponent<SpriteRenderer>().sprite = sprite2;
+                //transform.position.y = transform.position.y + 0.86;
+            }
+            else{
+                GetComponent<SpriteRenderer>().sprite = sprite1;
+               //transform.position.y = transform.position.y + -4.468984;
             }
         }
     }

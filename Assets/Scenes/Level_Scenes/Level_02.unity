@@ -263,9 +263,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292539136}
+  - component: {fileID: 292539137}
   m_Layer: 0
   m_Name: Level_02
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,6 +286,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292539137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292539135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d758555b9137b6841af5f6a1d9f5d843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 1
+  moveSpeed: 5
+  deadZone: -15
+  player: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!1 &323750851
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +927,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e0e6da0c6532048915d7dacf43b14c, type: 3}
+--- !u!1 &1990144272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3366461112499546728, guid: 39e0e6da0c6532048915d7dacf43b14c, type: 3}
+  m_PrefabInstance: {fileID: 1990144271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2084580903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 1990144272}
 --- !u!1001 &2099290860
 PrefabInstance:
   m_ObjectHideFlags: 0

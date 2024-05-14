@@ -4,37 +4,30 @@ using UnityEngine;
 
 public class SpikeScript : MonoBehaviour
 {
-    public float moveSpeed = 5;
-    public float deadZone = -15;
-    public BlockScript player;
-
-    public LogicScript logic;
+    public MovementScript movement;
+    private Transform m_transform;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        movement = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
+        m_transform = gameObject.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.IsAlive&&!logic.IsFreezed) {
-            transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
-        }
-
-        if(transform.position.x<deadZone){
-            Debug.Log("Spike Deleted");
-            Destroy(gameObject);
-        }
+        
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer==7) {
-            Debug.Log("Spike Destroyed!");
-            Destroy(gameObject);
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Collision with " + gameObject.name);
+        if(col.gameObject.layer==30){
+            if(movement.direction == col.gameObject.GetComponent<TriggerScript>().direction){
+                Destroy(gameObject);
+            }
+
         }
     }
-
 }

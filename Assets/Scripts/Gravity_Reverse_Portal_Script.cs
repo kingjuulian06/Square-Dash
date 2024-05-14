@@ -4,38 +4,24 @@ using UnityEngine;
 
 public class Gravity_Reverse_Portal_Script : MonoBehaviour
 {
-    public float moveSpeed = 5;
-    public float deadZone = -15;
-    public BlockScript player;
-
-    public LogicScript logic;
     //0 means from right to false
     //1 means from false to right
     public int direction;
-
-    // Start is called before the first frame update
+    public MovementScript movement;
+    
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        movement = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (player.IsAlive&&!logic.IsFreezed) {
-            transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
-        }
+        if(col.gameObject.layer==30){
+            if(movement.direction == col.gameObject.GetComponent<TriggerScript>().direction){
+                Destroy(gameObject);
+            }
 
-        if(transform.position.x<deadZone){
-            Debug.Log("Portal Deleted");
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.layer==3) {
-            Debug.Log("Player On Me");    
         }
     }
 }

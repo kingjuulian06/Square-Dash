@@ -2,43 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block2Script : MonoBehaviour
+public class MovementScript : MonoBehaviour
 {
-    public float moveSpeed;
+    public int direction = 1;
+    public float moveSpeed = 5;
     public float deadZone = -15;
     public BlockScript player;
-
     public LogicScript logic;
-    public MovementScript movement;
+    private string name;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-        movement = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
+        name = gameObject.name;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (player.IsAlive&&!logic.IsFreezed) {
-            transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
+            transform.position = transform.position + (Vector3.left * moveSpeed * direction) * Time.deltaTime;
         }
 
         if(transform.position.x<deadZone){
+            Debug.Log(name + " Deleted");          // Name of the Object
             Destroy(gameObject);
         }
     }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.gameObject.layer==30){
-            if(movement.direction == col.gameObject.GetComponent<TriggerScript>().direction){
-                Destroy(gameObject);
-            }
-
-        }
-    }
-
 }

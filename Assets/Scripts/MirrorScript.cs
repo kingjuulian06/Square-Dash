@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KetteScript : MonoBehaviour
+public class MirrorScript : MonoBehaviour
 {
+    //0 means from right to left
+    //1 means from left to right
+    public int direction;
     public MovementScript movement;
+    
     void Start()
     {
         movement = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

@@ -265,7 +265,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -341,6 +341,9 @@ MonoBehaviour:
   IsAlive: 1
   logic: {fileID: 0}
   IsFlying: 0
+  gravity: 2
+  sprite1: {fileID: 21300000, guid: 16457efa9d9327b42af5a5153c644385, type: 3}
+  sprite2: {fileID: -3919779002189068522, guid: 01800ff9ffd8d2e4e8cd8b1304f0a5e7, type: 3}
 --- !u!95 &5335148021179012634
 Animator:
   serializedVersion: 7

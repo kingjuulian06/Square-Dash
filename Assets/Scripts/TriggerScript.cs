@@ -6,45 +6,48 @@ public class TriggerScript : MonoBehaviour
 {
     public GameObject m_player;
     public Transform safeBoden;
-    private float moveSpeed = 5;
-    private float deadZone = -15;
     public LogicScript logic;
     public Transform cam;
     public Transform bg;
-    private BlockScript player_script;
+    private MovementScript movementScript;
     private Transform player_transform;
+    [field: SerializeField]
+    public int direction;
+    public MovementScript thisScript1;
+    public MovementScript thisScript2;
+
 
     void Start()
     {
         m_player = GameObject.FindGameObjectWithTag("Player");
-        player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
+        movementScript = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
         player_transform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         safeBoden = GameObject.Find("Safe_Boden").GetComponent<Transform>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         bg = GameObject.FindGameObjectWithTag("Background").GetComponent<Transform>();
+        thisScript1 = GameObject.Find("Trigger_01").GetComponent<MovementScript>();
+        thisScript2 = GameObject.Find("Trigger_02").GetComponent<MovementScript>();
+        if(gameObject.name == "Trigger_01"){
+            direction = 1;
+        }
+        else if(gameObject.name == "Trigger_02"){
+            direction = -1;
+        }
     }
 
-    void Update()
-    {
-        if (player_script.IsAlive&&!logic.IsFreezed) {
-            transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
+    void Update () {
+        if(movementScript.direction==1){
+            thisScript1.direction = -1;
+            thisScript2.direction = -1;
         }
-
-        if(transform.position.x<deadZone){
-            Debug.Log("Block Deleted");
-            Destroy(gameObject);
+        else if(movementScript.direction==-1){
+           thisScript1.direction = 1;
+           thisScript2.direction = 1;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
-            if (collider.gameObject.CompareTag("Player"))
-            {
-                cam.position += new Vector3(0, -10, 0);
-                safeBoden.position += new Vector3(0, -10, 0);
-                bg.position += new Vector3(0, -10, 0);
-                player_transform.position += new Vector3(0, -10, 0);
-                Debug.LogError("Erkannt");
-            }
-        }
+        Debug.Log("Collision with " + collider.gameObject.name);
+    }
 }

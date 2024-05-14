@@ -9,12 +9,14 @@ public class PolargeistScript : MonoBehaviour
     public BlockScript player;
 
     public LogicScript logic;
+    public MovementScript movement;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        movement = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class PolargeistScript : MonoBehaviour
         }
 
         if(transform.position.x<deadZone){
-            Debug.Log("Block Deleted");
+            Debug.Log("Polargeist Deleted");          // Name of the Object
             Destroy(gameObject);
         }
     }
@@ -33,6 +35,13 @@ public class PolargeistScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.layer==3) {
             Debug.Log("Player On Me");    
+        }
+
+        if(collider.gameObject.layer==30){
+            if(movement.direction == collider.gameObject.GetComponent<TriggerScript>().direction){
+                Destroy(gameObject);
+            }
+
         }
     }
 }

@@ -9,12 +9,14 @@ public class SmallSpikeScript : MonoBehaviour
     public BlockScript player;
 
     public LogicScript logic;
+    public MovementScript movement;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        movement = GameObject.FindGameObjectWithTag("Level").GetComponent<MovementScript>();
     }
 
     // Update is called once per frame
@@ -25,15 +27,18 @@ public class SmallSpikeScript : MonoBehaviour
         }
 
         if(transform.position.x<deadZone){
-            Debug.Log("Spike Deleted");
+            Debug.Log("Small Spike Deleted");          // Name of the Object
             Destroy(gameObject);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer==7) {
-            Debug.Log("Spike destroyed cause of Overlapping!");
-            Destroy(gameObject);
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.layer==30){
+            if(movement.direction == col.gameObject.GetComponent<TriggerScript>().direction){
+                Destroy(gameObject);
+            }
+
         }
     }
 }

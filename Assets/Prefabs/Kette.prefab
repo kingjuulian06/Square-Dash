@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855177071072127643}
   - component: {fileID: 8820367359962772819}
-  - component: {fileID: 7312622487449429733}
+  - component: {fileID: -313887156136979482}
   m_Layer: 0
   m_Name: Kette
   m_TagString: Untagged
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7312622487449429733
+--- !u!114 &-313887156136979482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,10 +96,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2143798069032021250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b158324e86deb914ca82ff654089bdc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 773faeba4f446c84588732d10bc533cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  deadZone: -15
-  player: {fileID: 0}
-  logic: {fileID: 0}

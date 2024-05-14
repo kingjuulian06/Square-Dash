@@ -1093,6 +1093,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e0e6da0c6532048915d7dacf43b14c, type: 3}
+--- !u!1 &1184560840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3366461112499546728, guid: 39e0e6da0c6532048915d7dacf43b14c, type: 3}
+  m_PrefabInstance: {fileID: 1184560839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1350259659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,9 +1283,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574401685}
+  - component: {fileID: 1574401686}
   m_Layer: 0
   m_Name: Level_03
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1312,6 +1318,23 @@ Transform:
   - {fileID: 2001576099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574401686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574401684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d758555b9137b6841af5f6a1d9f5d843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 1
+  moveSpeed: 5
+  deadZone: -15
+  player: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!1001 &1619141480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1449,7 +1472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1837155179}
   - component: {fileID: 1837155178}
-  - component: {fileID: 1837155177}
+  - component: {fileID: 1837155180}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1457,14 +1480,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1837155177
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837155176}
-  m_Enabled: 1
 --- !u!20 &1837155178
 Camera:
   m_ObjectHideFlags: 0
@@ -1531,6 +1546,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837155180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837155176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 1184560840}
 --- !u!1001 &1991055116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1840,8 +1868,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1573593601}
   - {fileID: 1837155179}
+  - {fileID: 1573593601}
   - {fileID: 1184560839}
   - {fileID: 528738009}
   - {fileID: 86259051}

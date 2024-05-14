@@ -9,6 +9,7 @@ public class LogicScript : MonoBehaviour
 {
 
     public BlockScript player;
+    public GameObject particles;
     public bool IsFreezed = false;
     [field: Header("Screens")]
     public GameObject gameOverScreen;
@@ -33,6 +34,7 @@ public class LogicScript : MonoBehaviour
         bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
         levelChanger = GameObject.FindGameObjectWithTag("LevelChanger").GetComponent<LevelChanger>();
+        particles = GameObject.Find("Touch");
     }
 
     public void addJump() {
@@ -60,6 +62,7 @@ public class LogicScript : MonoBehaviour
         gameOverScreen.SetActive(true);
         bgscript.ScrollSpeed = 0f;
         audioManager.StopMusic();
+        particles.SetActive(false);
     }
 
     void Update() 
@@ -69,6 +72,7 @@ public class LogicScript : MonoBehaviour
             pauseMenu.SetActive(true);
             bgscript.ScrollSpeed = 0f;
             audioManager.PauseMusic();
+            player.gravity = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && IsFreezed && player.IsAlive) {
             ClosePauseMenu();
