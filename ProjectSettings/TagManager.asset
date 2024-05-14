@@ -7,8 +7,6 @@ TagManager:
   - Logic
   - Background
   - LevelChanger
-  - Level
-  - Trigger
   layers:
   - Default
   - TransparentFX
@@ -21,10 +19,6 @@ TagManager:
   - Jumppad_Klein
   - "Jumppad_Gro\xDF"
   - Polargeist
-  - Gravity_Portal
-  - Mirror_Portal
-  - Ball_Portal
-  - Trigger
   - 
   - 
   - 
@@ -40,8 +34,12 @@ TagManager:
   - 
   - 
   - 
-  - Offset
-  - Level
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
