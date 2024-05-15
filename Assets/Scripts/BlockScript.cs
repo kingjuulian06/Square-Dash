@@ -20,6 +20,7 @@ public class BlockScript : MonoBehaviour
     public int direction = 1;
 
     private UnityEngine.RigidbodyConstraints2D constraints;
+    public GameObject particles;
 
 
     void Start()
@@ -28,6 +29,7 @@ public class BlockScript : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         m_Rigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         movement = GameObject.FindWithTag("Level");
+        particles = GameObject.Find("TouchParticles");
     }
 
     void Update()
@@ -40,6 +42,7 @@ public class BlockScript : MonoBehaviour
         if (IsFlying && !logic.IsFreezed && GetComponent<SpriteRenderer>().sprite == sprite1) {
             rotation = Vector3.back;
             transform.Rotate(rotation * speed * Time.deltaTime);
+            particles.SetActive(false);
         }
     
         if(Input.GetKeyDown(KeyCode.Space) && IsAlive && !IsFlying && !logic.IsFreezed && GetComponent<SpriteRenderer>().sprite == sprite1) {
@@ -77,16 +80,19 @@ public class BlockScript : MonoBehaviour
 
         if (collision.gameObject.layer==6) {
             IsFlying=false;
+            particles.SetActive(true);
         }
 
         if (collision.gameObject.layer==8) {
             m_Rigidbody.velocity = Vector2.up * 10;
             IsFlying = true;
+            particles.SetActive(false);
         }
 
         if (collision.gameObject.layer==9) {
             m_Rigidbody.velocity = Vector2.up * 17;
             IsFlying = true;
+            particles.SetActive(false);
         }
         
     }

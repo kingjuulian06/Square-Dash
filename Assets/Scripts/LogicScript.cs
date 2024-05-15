@@ -18,6 +18,7 @@ public class LogicScript : MonoBehaviour
     private int playerJumps;
     private int playTime;
     private int lastTime;
+    private int drehungen;
     private int trys;
     [field: Header("Stats")]
     public Text jumpsText;
@@ -34,7 +35,7 @@ public class LogicScript : MonoBehaviour
         bgscript = GameObject.FindGameObjectWithTag("Background").GetComponent<BackgroundScroller>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BlockScript>();
         levelChanger = GameObject.FindGameObjectWithTag("LevelChanger").GetComponent<LevelChanger>();
-        particles = GameObject.Find("Touch");
+        particles = GameObject.Find("TouchParticles");
     }
 
     public void addJump() {
